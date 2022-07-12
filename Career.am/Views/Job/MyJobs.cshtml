@@ -1,0 +1,28 @@
+﻿@model List<DataModels.JobModel>
+
+<input class="form-control input" type="search" placeholder="Search" id="SearchId" name="SearchId" />
+
+<div class="row">
+    <div class="col-4">
+        <select asp-items="(SelectList)ViewBag.industries" class="form-control input" id="IndustryId" name="IndustryId">
+            <option value="">Select Industry</option>
+        </select>
+    </div>
+    <div class="col-4">
+        <select asp-items="(SelectList)ViewBag.locations" class="form-control input" id="locationId" name="locationId">
+            <option value="">Select Location</option>
+        </select>
+    </div>
+    <div class="col-4">
+        <select asp-items="(SelectList)ViewBag.typeEmployments" class="form-control input" id="typeEmploymentId" name="typeEmploymentId">
+            <option value="">Select Type of employment</option>
+        </select>
+    </div>
+</div>
+
+<div id="ListActiveJobPartial">
+    <partial name="_ListActiveJob" model="Model">
+</div>
+<script>
+    var SearchUrl = '@Url.Action("ListActiveJob", "Job")'
+</script>

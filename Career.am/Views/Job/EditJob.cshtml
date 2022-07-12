@@ -1,0 +1,72 @@
+﻿@model DataModels.JobModel
+
+<div class="container">
+    <div class="list-card box-shadow mx-auto">
+        <form method="post" asp-controller="Job" asp-action="EditJob" class="card-text">
+            <div class="row">
+                <div class="col-12">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                </div>
+                <input asp-for="Id" type="hidden" />
+                <div class="row">
+                    <div class="col-4 mb-4">
+                        <select asp-for="IndustryId" asp-items="(SelectList)ViewBag.industries" class="form-control input mb-0"></select>
+                        <span asp-validation-for="IndustryId" class="text-danger"></span>
+                    </div>
+                    <div class="col-4 mb-4">
+                        <select asp-for="LocationId" asp-items="(SelectList)ViewBag.locations" class="form-control input mb-0"></select>
+                        <span asp-validation-for="LocationId" class="text-danger"></span>
+                    </div>
+                    <div class="col-4 mb-4">
+                        <select asp-for="TypeEmploymentId" asp-items="(SelectList)ViewBag.typeEmployments" class="form-control input mb-0"></select>
+                        <span asp-validation-for="TypeEmploymentId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <input asp-for="Title" placeholder="Title*" class="input mb-0" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="col-12 mb-4">
+                    <input asp-for="CompanyName" placeholder="Company Name*" class="input mb-0" />
+                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+                <div class="col-12 mt-2 mb-4">
+                    <input type="date"  asp-for="Deadline" value="@Model.Deadline.ToString("yyyy-MM-dd")" min="@DateTime.Now" max="@DateTime.Now.AddMonths(1)"/>
+                    <span asp-validation-for="Deadline"></span>
+                </div>
+                <div class="col-12 mb-4">
+                    <textarea asp-for="Requirement" placeholder="Requirement*" class="input mb-0" rows="5"></textarea>
+                    <span asp-validation-for="Requirement" class="text-danger"></span>
+                </div>
+                <div class="col-12 mb-4">
+                    <textarea asp-for="Responsibilities" placeholder="Responsibilities*" class="input mb-0"></textarea>
+                    <span asp-validation-for="Responsibilities" class="text-danger"></span>
+                </div>
+                <div class="col-12 mb-4">
+                    <textarea asp-for="AppProcedures" placeholder="App procedures" class="input mb-0"></textarea>
+                    <span asp-validation-for="AppProcedures" class="text-danger"></span>
+                </div>
+                <div class="col-12 mb-4">
+                    <input asp-for="Salary" type="number" placeholder="Salary" class="input mb-0" />
+                    <span asp-validation-for="Salary" class="text-danger"></span>
+                </div>
+                <div class="col-12 text-center">
+                    <p>[Active/Inactive] <input type="checkbox" asp-for="Status" class="form-check-input"></p>
+
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn-fill">Update</button>
+                </div>
+            </div>
+        </form>
+        <hr />
+        <div class="row">
+            <div class="col-12 text-center">
+                <form method="post" asp-controller="Job" asp-action="DeleteJob">
+                    <input asp-for="Id" name="jobId" type="hidden" />
+                    <button type="submit" class="btn-fill btn-del">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@model DataModels.JobModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<DataAccess.Models.User> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+<div class="container list-card box-shadow">
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="list-card-title">@Model.Title</p>
+            <p class="list-card-company-name">@Model.CompanyName</p>
+
+            <p>@Model.Requirement</p>
+            <p>@Model.Responsibilities</p>
+            <p>@Model.AppProcedures</p>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-4 text-center">
+            <p class="list-card-company-name">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                @Model.LocationName
+            </p>
+        </div>
+        <div class="col-4 text-center">
+            <p class="list-card-company-name">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                </svg>
+            @Model.IndustryName</p>
+        </div>
+        <div class="col-4 text-center">
+            <p class="list-card-company-name">@Model.TypeEmployments</p>
+        </div>
+        <div class="col-4 text-center">
+            <p class="list-card-company-name">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-x" viewBox="0 0 16 16">
+                    <path d="M6.146 7.146a.5.5 0 0 1 .708 0L8 8.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 9l1.147 1.146a.5.5 0 0 1-.708.708L8 9.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 9 6.146 7.854a.5.5 0 0 1 0-.708z" />
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                </svg>
+                @Model.Deadline
+            </p>
+        </div>
+        <div class="col-4 text-center">
+            <p class="list-card-company-name">
+                @if (Model.Salary != null)
+                {
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+                    </svg>
+                    @Model.Salary;
+                }
+            </p>
+        </div>
+        <div class="col-4 text-center">
+            @if (Model.Status)
+            {
+                <p class="list-card-company-name">Active</p>
+            }
+            else
+            {
+                <p class="list-card-company-name">Inactive</p>
+            }
+        </div>
+        <div class="col-12 text-center">
+            @if (User.Identity.IsAuthenticated && user.Id == Model.UserId)
+            {
+                <a asp-controller="Job" asp-action="EditJob" asp-route-jobId="@Model.Id" class="btn-fill">Edit</a>
+            }
+            else if (Model.IsApplaied == false && Model.Status == true)
+            {
+                <form method="post" asp-action="ApplyJob" asp-controller="Job">
+                    <input asp-for="@Model.Id" name="jobId" type="hidden">
+                    <button type="submit" class="btn-fill box-shadow">Apply</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+
+

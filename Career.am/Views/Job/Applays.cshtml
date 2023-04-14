@@ -1,0 +1,16 @@
+﻿@model List<DataAccess.Models.User>
+
+@{
+    ViewData["Title"] = "Applays";
+}
+
+<h1>Applays Users</h1>
+<br />
+<br />
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Email
+            </td>
+        </tr>
+}

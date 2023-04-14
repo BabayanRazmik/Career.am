@@ -185,5 +185,17 @@ namespace Career.am.Controllers
         }
 
         #endregion
+
+        #region Applays Job
+
+        [HttpGet]
+        public async Task<IActionResult> Applays(int jobId)
+        {
+            var users = await _unitOfWork.JobRepository.ApplaysJob(jobId);
+
+            return View(users);
+        }
+
+        #endregion
     }
 }

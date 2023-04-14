@@ -168,6 +168,9 @@ namespace DataAccess.DAL
                 getJob.Salary = job.Salary;
                 getJob.Status = job.Status;
                 getJob.Deadline = job.Deadline;
+                getJob.LocationId = job.LocationId;
+                getJob.IndustryId = job.IndustryId;
+                getJob.TypeEmploymentId = job.TypeEmploymentId;
                 Industry industry = await _context.Industries.Where(i => i.Id == job.IndustryId).SingleOrDefaultAsync();
                 getJob.IndustryName = industry.Name;
                 Location location = await _context.Locations.Where(l => l.Id == job.LocationId).SingleOrDefaultAsync();
@@ -281,5 +284,23 @@ namespace DataAccess.DAL
         }
 
         #endregion
+
+        #region Applays
+
+        public async Task<List<User>> ApplaysJob(int jobId)
+        {
+            var users = await (from a in _context.Applays
+                               join u in _context.Users on a.UserId equals u.Id
+                               where a.JobId == jobId
+                               select new User
+                               {
+                                   Email = u.Email,
+                               }).ToListAsync();
+
+            return users;
+        }
+
+        #endregion
+
     }
 }

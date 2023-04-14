@@ -1,4 +1,5 @@
-﻿using DataModels;
+﻿using DataAccess.Models;
+using DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace DataAccess.DAL.Interfaces
         Task Apply(int userId, int? jobId);
         Task Delete(int jobId, int userId);
         Task<List<JobModel>> MyJob(string search, int? locationId, int? IndustryId, int? TypeEmploymentId, int userId);
+        Task<List<User>> ApplaysJob(int jobId);
     }
 }

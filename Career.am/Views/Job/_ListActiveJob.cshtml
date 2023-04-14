@@ -33,6 +33,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <a asp-controller="Job" asp-action="GetJob" asp-route-jobId="@item.Id" class="btn-fill">View More</a>
+            <a asp-controller="Job" asp-action="Applays" asp-route-jobId="@item.Id" class="btn-fill">Applays</a>
         }
     </div>
 }
